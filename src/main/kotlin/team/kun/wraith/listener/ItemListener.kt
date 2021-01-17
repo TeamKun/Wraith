@@ -5,7 +5,11 @@ import org.bukkit.event.Listener
 import org.bukkit.event.block.Action
 import org.bukkit.event.player.PlayerInteractEvent
 import org.bukkit.plugin.java.JavaPlugin
+import team.kun.wraith.ext.getMeta
+import team.kun.wraith.ext.setMeta
 import team.kun.wraith.item.Kunai
+import team.kun.wraith.item.Portal
+import team.kun.wraith.metadata.MetadataKey
 import team.kun.wraith.metadata.PlayerFlagMetadata
 
 class ItemListener(private val plugin: JavaPlugin) : Listener {
@@ -21,6 +25,14 @@ class ItemListener(private val plugin: JavaPlugin) : Listener {
             if (Kunai().equal(event.player.inventory.itemInMainHand, plugin)) {
                 playerFlagMetadata.avoidTwice(player)
                 Kunai().execute(player, plugin)
+                event.isCancelled = true
+            } else if (Portal().equal(event.player.inventory.itemInMainHand, plugin)) {
+                playerFlagMetadata.avoidTwice(player)
+                if (player.getMeta(MetadataKey.UsingDimensionLift, false)) {
+                    player.setMeta(plugin, MetadataKey.UsingDimensionLift, false)
+                } else {
+                    Portal().execute(player, plugin)
+                }
                 event.isCancelled = true
             }
         }

@@ -6,6 +6,7 @@ import org.bukkit.plugin.java.JavaPlugin
 object RecipeService {
     val items: List<Craftable> = listOf(
             Kunai(),
+            Portal()
     )
 
     fun add(plugin: JavaPlugin) {
