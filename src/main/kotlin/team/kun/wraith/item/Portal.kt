@@ -98,7 +98,7 @@ class Portal : Item(), Craftable {
         if (!isEntrance) {
             locations = locations.reversed()
         }
-        Observable.interval(1).take(locations.size.toLong())
+        Observable.interval(1).take(locations.size.toLong() - 1)
                 .doOnNext {
                     object : BukkitRunnable() {
                         override fun run() {
