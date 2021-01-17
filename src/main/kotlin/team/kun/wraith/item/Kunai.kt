@@ -27,7 +27,7 @@ class Kunai : Item(), Craftable {
     )
     override val itemStack = ItemStack(Material.STONE_SWORD)
 
-    private val coolTime = 15
+    private val coolTime = 20
 
     override fun getRecipe(plugin: JavaPlugin): ShapedRecipe? {
         val key = getKey(plugin) ?: return null
