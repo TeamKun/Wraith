@@ -51,7 +51,7 @@ class Kunai : Item(), Craftable {
                 .take(17)
                 .doOnNext {
                     if (it == 5L) {
-                        player.location.playSound(Sound.BLOCK_PORTAL_TRIGGER, 1.0f, 1.0f)
+                        player.location.playSound(Sound.BLOCK_PORTAL_TRIGGER, 0.2f, 1.0f)
                         object : BukkitRunnable() {
                             override fun run() {
                                 EntityUtil.hide(player, plugin)

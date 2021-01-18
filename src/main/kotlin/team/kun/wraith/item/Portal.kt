@@ -91,7 +91,7 @@ class Portal : Item(), Craftable {
             return
         }
 
-        player.location.playSound(Sound.BLOCK_PORTAL_TRAVEL, 1.0f, 1.0f)
+        player.playSound(player.location, Sound.BLOCK_PORTAL_TRAVEL, 0.2f, 1.0f)
         var locations = portal.getMeta(MetadataKey.Locations) ?: return
         val isEntrance = portal.getMeta(MetadataKey.IsDimensionLiftEntrance) ?: return
         player.gameMode = GameMode.SPECTATOR
