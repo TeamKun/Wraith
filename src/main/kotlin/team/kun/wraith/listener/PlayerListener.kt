@@ -39,13 +39,15 @@ class PlayerListener(private val plugin: JavaPlugin) : Listener {
     @EventHandler
     fun onMove(event: PlayerMoveEvent) {
         val player = event.player
-        player.location.world?.getNearbyEntities(player.location, 0.3, 0.3, 0.3)
-                ?.filterIsInstance<ArmorStand>()
-                ?.forEach {
-                    if (it.getMeta(MetadataKey.DimensionLift, false)) {
-                        Portal().warp(player, it, plugin)
-                        return
+        if (!player.getMeta(MetadataKey.Warping, false)) {
+            player.location.world?.getNearbyEntities(player.location, 0.3, 0.3, 0.3)
+                    ?.filterIsInstance<ArmorStand>()
+                    ?.forEach {
+                        if (it.getMeta(MetadataKey.DimensionLift, false)) {
+                            Portal().warp(player, it, plugin)
+                            return
+                        }
                     }
-                }
+        }
     }
 }

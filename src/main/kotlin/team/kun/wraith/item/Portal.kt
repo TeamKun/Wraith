@@ -92,6 +92,7 @@ class Portal : Item(), Craftable {
         }
 
         player.playSound(player.location, Sound.BLOCK_PORTAL_TRAVEL, 0.2f, 1.0f)
+        player.setMeta(plugin, MetadataKey.Warping, true)
         var locations = portal.getMeta(MetadataKey.Locations) ?: return
         val isEntrance = portal.getMeta(MetadataKey.IsDimensionLiftEntrance) ?: return
         player.gameMode = GameMode.SPECTATOR
@@ -108,6 +109,7 @@ class Portal : Item(), Craftable {
                 }
                 .doOnComplete {
                     player.setMeta(plugin, MetadataKey.WarpCoolTime, System.currentTimeMillis())
+                    player.setMeta(plugin, MetadataKey.Warping, false)
                     object : BukkitRunnable() {
                         override fun run() {
                             player.gameMode = GameMode.SURVIVAL

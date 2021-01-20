@@ -13,7 +13,7 @@ sealed class MetadataKey<T>(val value: String) {
     object DimensionLift : MetadataKey<Boolean>("DimensionLift")
     object IsDimensionLiftEntrance : MetadataKey<Boolean>("IsDimensionLiftEntrance")
     object UsingDimensionLift : MetadataKey<Boolean>("UsingDimensionLift")
-
+    object Warping : MetadataKey<Boolean>("Warping")
 
     object Locations : MetadataKey<List<Location>>("Locations")
 }
